@@ -9,7 +9,6 @@ services:
       - diagnostics
     environment:
       - PATH=/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
-      - HOSTNAME=123456
       - DBUS_SESSION_BUS_ADDRESS=unix:path=/session/dbus/session_bus_socket
       - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket 
       - FIRMWARE_VERSION=2021.10.27.0 
@@ -66,7 +65,6 @@ services:
     privileged: true
     environment:
       - PATH=/opt/iotloragateway/dev/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
-      - HOSTNAME=a9c9944ddd44 
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
       - BALENA_APP_ID=1804673 
@@ -122,7 +120,6 @@ services:
       - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/session/dbus/session_bus_socket
       - RELEASE_BUMPER=foobar
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/miner/bin 
-      - HOSTNAME=ee657e2dcab2 
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
       - BALENA_APP_ID=1804673 
@@ -157,7 +154,6 @@ services:
     environment:
       - FIRMWARE_VERSION=2021.10.27.0
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-      - HOSTNAME=20f83bb46a5c 
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
       - BALENA_APP_ID=1804673 
@@ -209,7 +205,6 @@ services:
     environment:
       - DBUS_ADDRESS=unix:path=/session/dbus/session_bus_socket
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-      - HOSTNAME=2e271cf602b5
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
       - BALENA_APP_ID=1804673 
