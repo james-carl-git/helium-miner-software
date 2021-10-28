@@ -1,10 +1,16 @@
-core_freq=250
-dtoverlay=spi1-3cs
-dtoverlay=uart0,txd0_pin=32,rxd0_pin=33,pin_func=7
+# Enable UART
+enable_uart=1
+# Enable VC4 Graphics
+dtoverlay=vc4-fkms-v3d
+
+# Force arm in 64bit mode. See: https://github.com/raspberrypi/firmware/issues/1193.
+arm_64bit=1
 dtparam=i2c_arm=on
 dtparam=spi=on
+disable_splash=1
 dtparam=audio=on
+dtoverlay=dwc2,dr_mode=host
+dtoverlay=spi1-3cs
+dtoverlay=uart0,txd0_pin=32,rxd0_pin=33,pin_func=7
 avoid_warnings=1
 disable_overscan=1
-disable_splash=1
-gpu_mem=16
