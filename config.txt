@@ -1,9 +1,6 @@
-# Enable UART
+gpu_mem=16
 enable_uart=1
-# Enable VC4 Graphics
 dtoverlay=vc4-fkms-v3d
-
-# Force arm in 64bit mode. See: https://github.com/raspberrypi/firmware/issues/1193.
 arm_64bit=1
 dtparam=i2c_arm=on
 dtparam=spi=on
