@@ -35,6 +35,7 @@ Unfortunately the CM4 is not a drop in replacement of the CM3. First of all the 
 5. Fill out the remaining fields, the defaults should suffice unless you are running on WiFi in which case enter your network credentials
 6. Download the image
 7. Flash image to the SD Card (ECC if applicable) you plan on using in the miner using Balena Etcher or your method of choice
+8. Go to the boot partition and replace the config.txt file with the config.txt file in this repository
 
 ### Deploying Software
 1. 
