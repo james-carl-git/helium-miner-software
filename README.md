@@ -16,7 +16,7 @@ The Raspberry Pi CM3 works best when the voltage is above 5V and my theory is th
 
 If your Raspberry Pi Compute Module 3 is broken, it can be hard to find a replacement as they have been replaced by the CM4. The CM3 can be replaced by the CM4 but it will require some hardware and software modification. These modifications are not for the faint of heart so only procede as a last resort. 
 
-Due to the CM4 not having the same GPIO pins 
+Unfortunately the CM4 is not a drop in replacement of the CM3. First of all the OS is incompatiable and will not boot up. In addition the GPIO is limited on the CM4 and does not have GPIO 
 
 ### Materials Needed
 1. Raspberry Pi CM4 (1GB ram sufficient)
