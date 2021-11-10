@@ -15,19 +15,22 @@ This obviously would void any warranty. Proceed at your own risk!
 
 Indoor:
 
-![Indoor](indoor_5v_regulator.png)
+![Indoor 5v regulator](indoor_5v_regulator.png)
 
 Outdoor:
 
-![Outdoor](outdoor_5v_regulator.png)
+![Outdoor 5v regulator](outdoor_5v_regulator.png)
 
-2. Replace with regulator capable of at least 3 amps output. I prefer using a DC to DC buck converter that is adjustable, allowing me to overvoltage slightly to 5.1 volts. Doesn't really matter which one, LM2596 and MP1584EN are easy to find.
+2. Replace with regulator capable of at least 3 amps output. I prefer using a DC to DC buck converter that is adjustable, allowing me to overvoltage slightly to 5.1 volts. Doesn't really matter which one, LM2596 and MP1584EN are easy to find. Adjust before soldering to PCB
 3. Connect voltage regulator to GND, 12V, and 5V PCB circuits. I found the following locations easy to solder to.
 
 For outdoor, I soldered to the 12V and 5V capacitors:
-
+![Outdoor solder points](outdoor_new_regulator.png)
 
 For indoor, I soldered to the 12V barrel plug (red wire is 12V, greed wire is ground), and the 5V capacitor (yellow wire).
+![Indoor solder points](indoor_new_regulator.png)
+
+4. Secure wires and voltage regulator to prevents shorts.
 
 ## Replace Raspberry Pi CM3 with CM4
 
@@ -42,7 +45,7 @@ Unfortunately the CM4 is not a drop in replacement of the CM3. First of all the 
 
 ### Hardware Modifications
 1. Replace CM3 with CM4 and adpater
-2. 
+2. Connect 
 
 ### Installing BalenaOS on SD Card
 1. Create a Balena Cloud account and log into dashboard
@@ -55,5 +58,6 @@ Unfortunately the CM4 is not a drop in replacement of the CM3. First of all the 
 8. Go to the boot partition and replace the config.txt file with the config.txt file in this repository
 
 ### Deploying Software
+Note these instructions apply to linux, not sure of the steps on other OSes
 1. 
 
