@@ -8,9 +8,14 @@ I have measured voltages as low as 4.7V when the miner is booted up and running.
 
 The Raspberry Pi CM3 works best when the voltage is above 5V and my theory is that the instability of the Nebra is due to the weak voltage regulator.
 
+This obviously would void any warranty. Proceed at your own risk!
+
 ### Indoor Miner Steps
 1. Desolder the 5V regulator
-
+Indoor:
+![Indoor](indoor_5v_regulator.png)
+Outdoor:
+![Outdoor](outdoor_5v_regulator.png)
 
 ## Replace Raspberry Pi CM3 with CM4
 
