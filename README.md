@@ -21,13 +21,13 @@ Outdoor:
 
 ![Outdoor 5v regulator](outdoor_5v_regulator.png)
 
-2. Replace with regulator capable of at least 3 amps output. I prefer using a DC to DC buck converter that is adjustable, allowing me to overvoltage slightly to 5.1 volts. Doesn't really matter which one, LM2596 and MP1584EN are easy to find. Adjust before soldering to PCB
+2. Replace with regulator capable of at least 3 amps output. I prefer using a DC to DC buck converter that is adjustable, allowing me to overvoltage slightly to 5.1 volts. Doesn't really matter which one, LM2596 and MP1584EN are easy to find. Adjust voltage before soldering to PCB.
 3. Connect voltage regulator to GND, 12V, and 5V PCB circuits. I found the following locations easy to solder to.
 
 For outdoor, I soldered to the 12V and 5V capacitors:
 ![Outdoor solder points](outdoor_new_regulator.png)
 
-For indoor, I soldered to the 12V barrel plug (red wire is 12V, greed wire is ground), and the 5V capacitor (yellow wire).
+For indoor, I soldered to the 12V barrel plug (red wire is 12V, green wire is ground), and the 5V capacitor (yellow wire).
 ![Indoor solder points](indoor_new_regulator.PNG)
 
 4. Secure wires and voltage regulator to prevents shorts.
