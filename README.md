@@ -44,8 +44,10 @@ Unfortunately the CM4 is not a drop in replacement of the CM3. First of all the 
 3. Small wire
 
 ### Hardware Modifications
-1. Replace CM3 with CM4 and adpater
-2. Connect 
+1. Replace CM3 with CM4 and adpater. Note that this will prevent you from connecting the USB cable on the outdoor miner meaning you can no longer use Bluetooth or WiFi without further modification. 
+2. Connect GPIO13 to GPIO38 on the CM3 daughterboard by soldering a small jumper wire between the 2 header pins. Reason for this is that the CM4 does not have a GPIO38 and this pin is used by the Nebra software to reset the LoRa transceiver. I have built a new packet forwarder docker container that changes the code to use GPIO13 instead of GPIO38 to reset the LoRa transceiver.
+
+![GPIO Jumper](GPIO_jumper.PNG)
 
 ### Installing BalenaOS on SD Card
 1. Create a Balena Cloud account and log into dashboard
@@ -55,9 +57,12 @@ Unfortunately the CM4 is not a drop in replacement of the CM3. First of all the 
 5. Fill out the remaining fields, the defaults should suffice unless you are running on WiFi in which case enter your network credentials
 6. Download the image
 7. Flash image to the SD Card (ECC if applicable) you plan on using in the miner using Balena Etcher or your method of choice
-8. Go to the boot partition and replace the config.txt file with the config.txt file in this repository
+8. Go to the boot partition and replace the config.txt file with the [config.txt](https://github.com/james-carl-git/helium-miner-software/blob/master/config.txt) file in this repository. This is required in order to enable USB2 ports on the CM4.
 
 ### Deploying Software
-Note these instructions apply to linux, not sure of the steps on other OSes
-1. 
+1. Plug in your miner and make sure it is showing up in your balena dashboard
+2. Download the [docker-compose.yml](https://github.com/james-carl-git/helium-miner-software/blob/master/docker-compose.yml) and place in an empty folder on your computer
+3. Go to the balena dashboard and navigate to the fleet you created -> releases -> Add release. Copy the provided command
+4. Navigate with your CLI to the folder you downloaded the docker-compose.yml file to and run the copied commands
+5. After a couple minutes, the build should finish and you should see your miner getting updated to the release you just built. Note that this is how you will also need to update your miner if a new release is required. When updating, I have found that you sometimes need to "purge data" on your device from the dashboard to get the miner working after an update. 
 
