@@ -37,19 +37,20 @@ For indoor, I soldered to the 12V barrel plug (red wire is 12V, green wire is gr
 
 If your Raspberry Pi Compute Module 3 is broken, it can be hard to find a replacement as they have been replaced by the CM4. The CM3 can be replaced by the CM4 but it will require some hardware and software modification. These modifications are not for the faint of heart so only proceed as a last resort. 
 
-Unfortunately the CM4 is not a drop in replacement of the CM3. First of all the OS is incompatiable and will not boot up. In addition the GPIO is limited on the CM4 and does not have the GPIO pin needed to reset the LoRa concentrator and therefore needs to be remapped in the software. 
+Unfortunately the CM4 is not a drop in replacement of the CM3. First of all the OS is incompatiable and will not boot up. In addition the GPIO is limited on the CM4 and does not have the GPIO pin needed to reset the LoRa concentrator and therefore needs to be remapped on the hardware and in the software. The hardware modification can be done by soldering a small jumper wire on the CM3 daughterboard. The software modification requires us to deplay BalenaOS on the device and flash modified software to the miner that you will need to update when necessary.
 
 This obviously would void any warranty. Proceed at your own risk!
 
 ### Materials Needed
 1. Raspberry Pi CM4 (1GB ram sufficient)
-2. CM4 to CM3 adapter, I use the one from geekworm
+2. CM4 to CM3 adapter, I used the one from geekworm
 3. Small wire
 
 ### Hardware Modifications
 1. Replace CM3 with CM4 and adpater. Note that this will prevent you from connecting the USB cable on the outdoor miner meaning you can no longer use Bluetooth or WiFi without further modification. 
 2. Connect GPIO13 to GPIO38 on the CM3 daughterboard by soldering a small jumper wire between the 2 header pins. Reason for this is that the CM4 does not have a GPIO38 and this pin is used by the Nebra software to reset the LoRa transceiver. I have built a new packet forwarder docker container that changes the code to use GPIO13 instead of GPIO38 to reset the LoRa transceiver.
 
+![CM3 Daughterboard pinout](daughterBoard-pinout.png)
 ![GPIO Jumper](GPIO_jumper.PNG)
 
 ### Installing BalenaOS on SD Card
@@ -68,4 +69,9 @@ This obviously would void any warranty. Proceed at your own risk!
 3. Go to the balena dashboard and navigate to the fleet you created -> releases -> Add release. Copy the provided command
 4. Navigate with your CLI to the folder you downloaded the docker-compose.yml file to and run the copied commands
 5. After a couple minutes, the build should finish and you should see your miner getting updated to the release you just built. Note that this is how you will also need to update your miner if a new release is required. When updating, I have found that you sometimes need to "purge data" on your device from the dashboard to get the miner working after an update. 
+
+## Add Cooling
+I have created the following 3D printed part that allow you to add cooling to your indoor miner in case it is prone to overheating: 
+
+https://www.thingiverse.com/thing:5015991
 
