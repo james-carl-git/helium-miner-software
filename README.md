@@ -10,7 +10,7 @@ The Raspberry Pi CM3 works best when the voltage is above 5V and my theory is th
 
 This obviously would void any warranty. Proceed at your own risk!
 
-### Indoor Miner Steps
+### Steps
 1. Desolder the 5V regulator
 
 Indoor:
@@ -28,7 +28,7 @@ For outdoor, I soldered to the 12V and 5V capacitors:
 ![Outdoor solder points](outdoor_new_regulator.png)
 
 For indoor, I soldered to the 12V barrel plug (red wire is 12V, greed wire is ground), and the 5V capacitor (yellow wire).
-![Indoor solder points](indoor_new_regulator.png)
+![Indoor solder points](indoor_new_regulator.PNG)
 
 4. Secure wires and voltage regulator to prevents shorts.
 
