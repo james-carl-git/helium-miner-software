@@ -21,6 +21,14 @@ Outdoor:
 
 ![Outdoor](outdoor_5v_regulator.png)
 
+2. Replace with regulator capable of at least 3 amps output. I prefer using a DC to DC buck converter that is adjustable, allowing me to overvoltage slightly to 5.1 volts. Doesn't really matter which one, LM2596 and MP1584EN are easy to find.
+3. Connect voltage regulator to GND, 12V, and 5V PCB circuits. I found the following locations easy to solder to.
+
+For outdoor, I soldered to the 12V and 5V capacitors:
+
+
+For indoor, I soldered to the 12V barrel plug (red wire is 12V, greed wire is ground), and the 5V capacitor (yellow wire).
+
 ## Replace Raspberry Pi CM3 with CM4
 
 If your Raspberry Pi Compute Module 3 is broken, it can be hard to find a replacement as they have been replaced by the CM4. The CM3 can be replaced by the CM4 but it will require some hardware and software modification. These modifications are not for the faint of heart so only procede as a last resort. 
