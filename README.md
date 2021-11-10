@@ -12,9 +12,13 @@ This obviously would void any warranty. Proceed at your own risk!
 
 ### Indoor Miner Steps
 1. Desolder the 5V regulator
+
 Indoor:
+
 ![Indoor](indoor_5v_regulator.png)
+
 Outdoor:
+
 ![Outdoor](outdoor_5v_regulator.png)
 
 ## Replace Raspberry Pi CM3 with CM4
