@@ -35,7 +35,7 @@ For indoor, I soldered to the 12V barrel plug (red wire is 12V, green wire is gr
 
 ## Replace Raspberry Pi CM3 with CM4
 
-If your Raspberry Pi Compute Module 3 is broken, it can be hard to find a replacement as they have been replaced by the CM4. The CM3 can be replaced by the CM4 but it will require some hardware and software modification. These modifications are not for the faint of heart so only procede as a last resort. 
+If your Raspberry Pi Compute Module 3 is broken, it can be hard to find a replacement as they have been replaced by the CM4. The CM3 can be replaced by the CM4 but it will require some hardware and software modification. These modifications are not for the faint of heart so only proceed as a last resort. 
 
 Unfortunately the CM4 is not a drop in replacement of the CM3. First of all the OS is incompatiable and will not boot up. In addition the GPIO is limited on the CM4 and does not have the GPIO pin needed to reset the LoRa concentrator and therefore needs to be remapped in the software. 
 
