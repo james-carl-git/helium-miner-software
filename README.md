@@ -60,7 +60,7 @@ This obviously would void any warranty. Proceed at your own risk!
 4. Select Raspberry Pi CM4 IO Board
 5. Fill out the remaining fields, the defaults should suffice unless you are running on WiFi in which case enter your network credentials
 6. Download the image
-7. Flash image to the SD Card (ECC if applicable) you plan on using in the miner using Balena Etcher or your method of choice
+7. Flash image to the SD Card (eMMC if applicable) you plan on using in the miner using Balena Etcher or your method of choice
 8. Go to the boot partition and replace the config.txt file with the [config.txt](https://github.com/james-carl-git/helium-miner-software/blob/master/config.txt) file in this repository. This is required in order to enable USB2 ports on the CM4.
 
 ### Deploying Software
