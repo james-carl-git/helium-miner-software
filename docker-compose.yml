@@ -2,8 +2,13 @@ version: '2'
 
 services:
 
+#  reset-on-disconnect:
+#    image: pixiewrangling/reset-on-disconnect:latest
+#    restart: always
+#    privileged: true
+
   gateway-config:
-    image: nebraltd/hm-config:e6a4b16
+    image: nebraltd/hm-config:8070d87
     depends_on:
       - dbus-session
       - diagnostics
@@ -11,22 +16,20 @@ services:
       - PATH=/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
       - DBUS_SESSION_BUS_ADDRESS=unix:path=/session/dbus/session_bus_socket
       - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket 
-      - FIRMWARE_VERSION=2021.10.27.0 
+      - FIRMWARE_VERSION=2021.11.16.3
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
       - BALENA_APP_ID=1804673 
       - BALENA_APP_NAME=HELIUM-INDOOR-915 
       - BALENA_SERVICE_NAME=gateway-config 
-      - BALENA_DEVICE_UUID=310dead3b5fe749fcd8eb120abd8ed8f 
-      - BALENA_DEVICE_TYPE=nebra-hnt 
+      - BALENA_DEVICE_TYPE=nebra-hnt
       - BALENA_DEVICE_ARCH=aarch64 
       - BALENA_HOST_OS_VERSION=balenaOS 2.71.3+rev5 
       - BALENA_APP_LOCK_PATH=/tmp/balena/updates.lock 
       - BALENA=1 
       - RESIN_APP_ID=1804673 
       - RESIN_APP_NAME=HELIUM-INDOOR-915 
-      - RESIN_SERVICE_NAME=gateway-config 
-      - RESIN_DEVICE_UUID=310dead3b5fe749fcd8eb120abd8ed8f 
+      - RESIN_SERVICE_NAME=gateway-config  
       - RESIN_DEVICE_TYPE=nebra-hnt 
       - RESIN_DEVICE_ARCH=aarch64 
       - RESIN_HOST_OS_VERSION=balenaOS 2.71.3+rev5 
@@ -40,9 +43,10 @@ services:
       - UDEV=off 
       - QEMU_CPU=arm1176 
       - LANG=C.UTF-8 
-      - PYTHON_VERSION=3.9.5 
-      - PYTHON_PIP_VERSION=21.0.1 
-      - SETUPTOOLS_VERSION=56.0.0 
+      - PYTHON_VERSION=3.10.0
+      - PYTHON_PIP_VERSION=21.2.4
+      - SETUPTOOLS_VERSION=58.0.0 
+      - PYTHONPATH=/opt:/usr/lib/python3/dist-packages
       - HOME=/root 
     privileged: true
     network_mode: host
@@ -59,18 +63,16 @@ services:
 
   packet-forwarder:
     image: pixiewrangling/nebra-reworked:latest
-    depends_on:
-      - helium-miner
     restart: always
     privileged: true
     environment:
       - PATH=/opt/iotloragateway/dev/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
+      - HOSTNAME=a9c9944ddd44 
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
       - BALENA_APP_ID=1804673 
       - BALENA_APP_NAME=HELIUM-INDOOR-915 
       - BALENA_SERVICE_NAME=packet-forwarder 
-      - BALENA_DEVICE_UUID=310dead3b5fe749fcd8eb120abd8ed8f
       - BALENA_DEVICE_TYPE=nebra-hnt 
       - BALENA_DEVICE_ARCH=aarch64 
       - BALENA_HOST_OS_VERSION=balenaOS 2.71.3+rev5 
@@ -79,7 +81,6 @@ services:
       - RESIN_APP_ID=1804673 
       - RESIN_APP_NAME=HELIUM-INDOOR-915 
       - RESIN_SERVICE_NAME=packet-forwarder
-      - RESIN_DEVICE_UUID=310dead3b5fe749fcd8eb120abd8ed8f
       - RESIN_DEVICE_TYPE=nebra-hnt 
       - RESIN_DEVICE_ARCH=aarch64 
       - RESIN_HOST_OS_VERSION=balenaOS 2.71.3+rev5 
@@ -97,7 +98,7 @@ services:
       - pktfwdr:/var/pktfwd
 
   helium-miner:
-    image: nebraltd/hm-miner:f223356
+    image: nebraltd/hm-miner:f956bdc
     depends_on:
       - dbus-session
       - diagnostics
@@ -125,19 +126,15 @@ services:
       - BALENA_APP_ID=1804673 
       - BALENA_APP_NAME=HELIUM-INDOOR-915 
       - BALENA_SERVICE_NAME=helium-miner
-      - BALENA_DEVICE_UUID=310dead3b5fe749fcd8eb120abd8ed8f
       - BALENA_DEVICE_TYPE=nebra-hnt 
       - BALENA_DEVICE_ARCH=aarch64 
-      - BALENA_HOST_OS_VERSION=balenaOS 2.71.3+rev5 
       - BALENA_APP_LOCK_PATH=/tmp/balena/updates.lock 
       - BALENA=1 
       - RESIN_APP_ID=1804673 
       - RESIN_APP_NAME=HELIUM-INDOOR-915
       - RESIN_SERVICE_NAME=helium-miner
-      - RESIN_DEVICE_UUID=310dead3b5fe749fcd8eb120abd8ed8f
       - RESIN_DEVICE_TYPE=nebra-hnt 
       - RESIN_DEVICE_ARCH=aarch64 
-      - RESIN_HOST_OS_VERSION=balenaOS 2.71.3+rev5
       - RESIN_APP_LOCK_PATH=/tmp/balena/updates.lock 
       - RESIN=1 
       - RESIN_SERVICE_KILL_ME_PATH=/tmp/balena/handover-complete 
@@ -147,19 +144,19 @@ services:
       - REBAR3_VERSION=3.16.1 
       - COOKIE=miner 
       - RELX_OUT_FILE_PATH=/tmp 
+      - HELIUM_GA_RELEASE=2021.11.16.3
       - HOME=/root 
 
   diagnostics:
-    image: nebraltd/hm-diag:68ae2fe
+    image: nebraltd/hm-diag:12420cf
     environment:
-      - FIRMWARE_VERSION=2021.10.27.0
-      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - FIRMWARE_VERSION=2021.11.16.3
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
       - BALENA_APP_ID=1804673 
       - BALENA_APP_NAME=HELIUM-INDOOR-915 
-      - BALENA_SERVICE_NAME=diagnostics
-      - BALENA_DEVICE_UUID=310dead3b5fe749fcd8eb120abd8ed8f 
+      - BALENA_SERVICE_NAME=diagnostics 
       - BALENA_DEVICE_TYPE=nebra-hnt 
       - BALENA_DEVICE_ARCH=aarch64 
       - BALENA_HOST_OS_VERSION=balenaOS 2.71.3+rev5 
@@ -168,7 +165,6 @@ services:
       - RESIN_APP_ID=1804673 
       - RESIN_APP_NAME=HELIUM-INDOOR-915
       - RESIN_SERVICE_NAME=diagnostics
-      - RESIN_DEVICE_UUID=310dead3b5fe749fcd8eb120abd8ed8f
       - RESIN_DEVICE_TYPE=nebra-hnt 
       - RESIN_DEVICE_ARCH=aarch64 
       - RESIN_HOST_OS_VERSION=balenaOS 2.71.3+rev5
@@ -177,6 +173,15 @@ services:
       - RESIN_SERVICE_KILL_ME_PATH=/tmp/balena/handover-complete 
       - BALENA_SERVICE_HANDOVER_COMPLETE_PATH=/tmp/balena/handover-complete
       - USER=root 
+      - LC_ALL=C.UTF-8
+      - DEBIAN_FRONTEND=noninteractive
+      - UDEV=off
+      - QEMU_CPU=arm1176
+      - LANG=C.UTF-8
+      - PYTHON_VERSION=3.10.0
+      - PYTHON_PIP_VERSION=21.2.4
+      - SETUPTOOLS_VERSION=58.0.0
+      - PYTHONPATH=/usr/lib/python3/dist-packages
       - HOME=/root 
     volumes:
       - pktfwdr:/var/pktfwd
@@ -210,7 +215,6 @@ services:
       - BALENA_APP_ID=1804673 
       - BALENA_APP_NAME=HELIUM-INDOOR-915 
       - BALENA_SERVICE_NAME=dbus-session
-      - BALENA_DEVICE_UUID=310dead3b5fe749fcd8eb120abd8ed8f 
       - BALENA_DEVICE_TYPE=nebra-hnt 
       - BALENA_DEVICE_ARCH=aarch64 
       - BALENA_HOST_OS_VERSION=balenaOS 2.71.3+rev5 
@@ -219,7 +223,6 @@ services:
       - RESIN_APP_ID=1804673 
       - RESIN_APP_NAME=HELIUM-INDOOR-915
       - RESIN_SERVICE_NAME=dbus-session 
-      - RESIN_DEVICE_UUID=310dead3b5fe749fcd8eb120abd8ed8f
       - RESIN_DEVICE_TYPE=nebra-hnt 
       - RESIN_DEVICE_ARCH=aarch64 
       - RESIN_HOST_OS_VERSION=balenaOS 2.71.3+rev5
