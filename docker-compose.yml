@@ -16,7 +16,7 @@ services:
       - PATH=/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
       - DBUS_SESSION_BUS_ADDRESS=unix:path=/session/dbus/session_bus_socket
       - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket 
-      - FIRMWARE_VERSION=2021.11.16.3
+      - FIRMWARE_VERSION=2021.11.17.2
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
       - BALENA_APP_ID=1804673 
@@ -98,7 +98,7 @@ services:
       - pktfwdr:/var/pktfwd
 
   helium-miner:
-    image: nebraltd/hm-miner:f956bdc
+    image: nebraltd/hm-miner:b34655f
     depends_on:
       - dbus-session
       - diagnostics
@@ -144,13 +144,13 @@ services:
       - REBAR3_VERSION=3.16.1 
       - COOKIE=miner 
       - RELX_OUT_FILE_PATH=/tmp 
-      - HELIUM_GA_RELEASE=2021.11.16.3
+      - HELIUM_GA_RELEASE=2021.11.17.2
       - HOME=/root 
 
   diagnostics:
     image: nebraltd/hm-diag:12420cf
     environment:
-      - FIRMWARE_VERSION=2021.11.16.3
+      - FIRMWARE_VERSION=2021.11.17.2
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
