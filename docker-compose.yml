@@ -8,7 +8,7 @@ services:
 #    privileged: true
 
   gateway-config:
-    image: nebraltd/hm-config:e0c6f88
+    image: nebraltd/hm-config:8cc544f
     depends_on:
       - dbus-session
       - diagnostics
@@ -16,7 +16,7 @@ services:
       - PATH=/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
       - DBUS_SESSION_BUS_ADDRESS=unix:path=/session/dbus/session_bus_socket
       - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket 
-      - FIRMWARE_VERSION=2021.11.22.0
+      - FIRMWARE_VERSION=2021.11.30.1
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
       - BALENA_APP_ID=1804673 
@@ -98,7 +98,7 @@ services:
       - pktfwdr:/var/pktfwd
 
   helium-miner:
-    image: nebraltd/hm-miner:arm64-d760384
+    image: nebraltd/hm-miner:arm64-3565d25
     depends_on:
       - dbus-session
       - diagnostics
@@ -144,13 +144,13 @@ services:
       - REBAR3_VERSION=3.16.1 
       - COOKIE=miner 
       - RELX_OUT_FILE_PATH=/tmp 
-      - HELIUM_GA_RELEASE=2021.11.22.0
+      - HELIUM_GA_RELEASE=2021.11.30.1
       - HOME=/root 
 
   diagnostics:
-    image: nebraltd/hm-diag:7e26f35
+    image: nebraltd/hm-diag:72f141f
     environment:
-      - FIRMWARE_VERSION=2021.11.22.0
+      - FIRMWARE_VERSION=2021.11.30.1
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
@@ -233,7 +233,7 @@ services:
       - USER=root 
       - HOME=/root 
       - UDEV=off
-      - FIRMWARE_VERSION=2021.11.22.0 
+      - FIRMWARE_VERSION=2021.11.30.1
 volumes:
   miner-storage:
   miner-log:
