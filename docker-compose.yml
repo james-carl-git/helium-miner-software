@@ -140,19 +140,15 @@ services:
       - RESIN_SERVICE_KILL_ME_PATH=/tmp/balena/handover-complete 
       - BALENA_SERVICE_HANDOVER_COMPLETE_PATH=/tmp/balena/handover-complete
       - USER=root 
-      - OTP_VERSION=23.3.4.7 
-      - REBAR3_VERSION=3.16.1 
       - COOKIE=miner 
       - RELX_OUT_FILE_PATH=/tmp 
       - HELIUM_GA_RELEASE=2021.11.30.1
       - HOME=/root 
 
   diagnostics:
-    image: nebraltd/hm-diag:72f141f
+    image: nebraltd/hm-diag:7e26f35
     environment:
       - FIRMWARE_VERSION=2021.11.30.1
-      - DIAGNOSTICS_VERSION=72f141f
-      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
       - FREQ=915 
       - VARIANT=NEBHNT-IN1 
@@ -196,8 +192,6 @@ services:
       - /dev/i2c-1:/dev/i2c-1
     labels:
       io.balena.features.sysfs: 1
-      io.balena.features.procfs: 1
-      io.balena.features.dbus: 1
 
   upnp:
     image: nebraltd/hm-upnp:b575a2f
